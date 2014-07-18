@@ -1,0 +1,35 @@
+% Java 01
+% Lukáš Němec
+% 2014
+
+# Java je
+
+* jazyk třetí generace (stejně jako C, C#, Pascal ...)
+* objektově orientovaný jazyk - OOP (stejně jako C++, C#, Delphi ...)
+* jednodušší než C++, srovnatelná s C#
+
+
+
+----
+
+# JVM
+
+
+# JRE vs JDK
+
+
+# Použití Javy
+
+
+
+
+# Vývojová prostředí
+
+* NetBeans
+* Eclipse
+* IntelliJ IDEA
+
+* Textový editor
+* BlueJ
+
+# Hello word
