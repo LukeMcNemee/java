@@ -8,19 +8,33 @@
 * objektově orientovaný jazyk - OOP (stejně jako C++, C#, Delphi ...)
 * jednodušší než C++, srovnatelná s C#
 
+-----
 
+# Rychlost
 
-----
+* pomalejší než kompilované jazyky (C, C++)
+* srovnatelná s ostatními Just in Time kompilovanými jazyky (C#)
+* rychlejší než jazyky bez kompilátoru (Python, Ruby, PHP)
+
+-----
 
 # JVM
 
+* umožňuje multiplatformní programy
+* výstupem překladače je mezikód (bytecode), který je JVM zpracováván
+* provádí překlad mezikódu do strojového kódu 
+* je součástí JRE
+
+-----
 
 # JRE vs JDK
 
+-----
 
 # Použití Javy
 
 
+-----
 
 
 # Vývojová prostředí
@@ -31,5 +45,7 @@
 
 * Textový editor
 * BlueJ
+
+-----
 
 # Hello word
