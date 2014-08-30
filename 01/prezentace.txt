@@ -29,10 +29,38 @@
 
 # JRE vs JDK
 
+* JRE < JDK
+* JRE umožňuje Javu spustit
+* JDK umožňuje Javu vyvíjet
+
 -----
 
 # Použití Javy
 
+* konzolové a grafické aplikace
+* webové stránky
+* aplikace pro telefony
+* JavaCard
+
+-----
+
+# O čem to bude
+
+* základy OOP
+* konzolové aplikace 
+* základní prvky Javy a jak je správně používat
+* Swing (grafické aplikace)
+* nějaká matematika
+* pravděpodobně základní kryptografie
+* samostatný projekt?
+
+-----
+
+# O čem to zatím nebude
+
+* webové aplikace
+* aplikace pro telefony
+* JavaCard
 
 -----
 
@@ -42,7 +70,8 @@
 * NetBeans
 * Eclipse
 * IntelliJ IDEA
-
+ 
+##ostatní možnosti
 * Textový editor
 * BlueJ
 
