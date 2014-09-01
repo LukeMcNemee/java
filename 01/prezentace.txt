@@ -78,3 +78,74 @@
 -----
 
 # Hello word
+
+-----
+
+#Dotazník
+
+-----
+
+#Programování
+
+* Pascal, C
+* OOP
+* SQL
+* web (HTML ...)
+* grafické aplikace
+
+-----
+
+#Matematika
+
+* obsahy, obvody atd. (kužel ..)
+* prvočísla
+* mocniny, faktoriál
+* kombinatorika, pravděpodobnost
+
+-----
+
+#Crypto
+
+* primitivní (Caesar, rot13 ...)
+* velká prvočísla 
+* RSA
+* AES
+
+-----
+
+#Verzovací nástroje
+
+* SVN
+* Git
+* něco dalšího?
+
+
+-----
+
+*
+*
+*
+*
+
+-----
+
+*
+*
+*
+*
+
+-----
+
+*
+*
+*
+*
+
+-----
+
+*
+*
+*
+*
+
+-----
