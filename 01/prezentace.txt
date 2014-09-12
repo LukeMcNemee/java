@@ -77,19 +77,34 @@
 
 -----
 
+# LukeMcNemee.eu
+
+* sekce lužánky info - Java
+* návod k Javě co nainstalovat a různé alternativy
+* snad pravidelně obsah jednotlivých hodin
+* snad řešení jednotlivých úloh z hodin
+* většinou formou odkazů na GitHub
+
+-----
+
 # Hello word
 
 -----
 
-#Dotazník
+---
+---
+
+# Dotazník
 
 -----
 
 #Programování
 
 * Pascal, C
+* Dynamická alokace
 * OOP
 * SQL
+* XML
 * web (HTML ...)
 * grafické aplikace
 
@@ -113,11 +128,15 @@
 
 -----
 
-#Verzovací nástroje
+##Verzovací nástroje
 
 * SVN
 * Git
-* něco dalšího?
+
+##Angličtina
+* na úrovni Get, isEmpty, remove ...
+* názvy funkcí, proměnných 
+* pochopit základ z JavaDoc 
 
 
 -----
