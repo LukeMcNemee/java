@@ -6,7 +6,7 @@
 package semaphore;
 
 /**
- *
+ * Basic demonstration of semaphore class function
  * @author LukeMcNemee
  */
 public class Main {
@@ -15,8 +15,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //create new semaphore s1
         Semaphore s1 = new Semaphore();
 
+        //few times print info and switch state
         s1.printInfo();
         s1.nextState();
         s1.printInfo();
