@@ -90,10 +90,33 @@
 
 # Hello word
 
+##PuTTY
+
+* SSH klient - umožňuje připojení na vzdálený server
+* server LukeMcNemee.eu - Debian linux, java version 1.7
+* pouze terminál :-)
+* login: java
+* heslo: abcd
+
 -----
 
----
----
+# Hello world II.
+
+* vytvoření vlastní složky:  mkdir "název"
+* otevření složky: cd "název"
+* vypsání obsahu složky: ls
+* vytvoření souboru: touch hello.java
+* editace souboru: nano hello.java
+* uložení změn: CTRL + O
+* zavření editoru: CTRL + X
+* přeložení programu: javac hello.java
+* spuštění programu" java Hello
+* odhlášení: logout
+
+
+
+-----
+
 
 # Dotazník
 
