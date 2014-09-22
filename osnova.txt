@@ -1,0 +1,29 @@
+Osnova Java (pracovní verze):
+
+2.1. Úvod do jazyka Java
+2.2. Třída, objekt; proměnná a metoda objektu a třídy, zapouzdření
+2.3. Spolupráce a komunikace mezi objekty
+2.4. Rozhraní a jeho implementace třídou
+2.5. Syntaxe jazyka
+2.6. Dokumentace používaného a vlastního kódu, nástroj Javadoc
+2.7. Testování programů, nástroj JUnit
+2.8. Dědičnost, polymorfizmus, hierarchie tříd, architektura programu
+2.9. Primitivní datové typy, objektové typy, pole
+2.10. Výjimky, princip jejich použití a návrhu
+2.11. Abstraktní třídy
+2.12. Dynamické datové struktury
+
+1. třída, objekt, instance
+   zapouzdření, public, private, funkce, static,
+2. get, set, konstruktor, Javadoc
+2. enum, toString, 
+3. abstraktní třída, rozhraní
+4. Primitivní datové typy
+5. Dědičnost, polymorfizmus, hierarchie tříd,
+6. Equals, hashCode, 
+7. copareTo, comparator
+8. Pole
+9. Kontejnery, list, set, map
+10. exceptions, throw, použití
+11. JUnit, testy
+12. 
