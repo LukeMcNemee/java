@@ -1,0 +1,80 @@
+% Java 02 (objekty)
+% Luke McNemee
+% 2014
+
+# Objekt - motivace
+
+* obvykle modelujeme svět
+* Svět je objektový
+
+-----
+
+#Svět je objektový
+![](objects.png)
+
+
+-----
+
+# Objekt
+
+* Vše je objekt
+* Objekty komunikují pomocí zpráv
+* Objekty mají interní stav
+* Objekt je instancí třídy (class)
+
+-----
+
+#Zapouzdření
+
+* public a private
+* určuje viditelnost funkcí, proměnných pro okolí
+* proměnné vždy private!!!
+* funkce dle potřeby
+* slouží k omezení přístupu, tedy zabránění nechtěným zásahům do vnitřního stavu
+* z okolí je vidět pouze jednoduché rozhraní, uživatel nevidí implementaci
+* uživatel by měl být na implementaci nezávislý
+
+-----
+
+#Detaily implementace
+![](golf.jpg)
+
+-----
+
+# Proč zapouzdření?
+
+* implementace není závislá na změnách okolního kódu
+* lepší ochrana vnitřního stavu proti chybám
+* kontrola nastavovaných parametrů
+* možnost změnit implementaci bez ohledu na uživatele
+* navádí uživatele k správnému použití
+
+-----
+
+#Static
+
+* náleží třídě, nikoliv konkrétní instanci třídy
+* existuje pouze jedna instance statické položky
+* typické využití pro univerzální funkce (připojení k databázi, převod do binárky ...)
+* statická funkce nemůže přistoupit k nestatickým funkcím stejného objektu (není svázaná se stejnou instancí)
+
+
+-----
+
+# Semafor 
+
+* Zatím pouze binární (ukazuje 1 nebo 0)
+* private proměnná se stavem
+* funkce pro přepnutí stavu
+* funkce pro zjištění stavu
+* funkce pro výpis informací
+
+-----
+
+
+
+
+
+
+
+

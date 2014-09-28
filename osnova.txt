@@ -16,7 +16,7 @@ Osnova Java (pracovní verze):
 1. třída, objekt, instance
    zapouzdření, public, private, funkce, static,
 2. get, set, konstruktor, Javadoc
-2. enum, toString, 
+2. enum, toString, konstanty
 3. abstraktní třída, rozhraní
 4. Primitivní datové typy
 5. Dědičnost, polymorfizmus, hierarchie tříd,
