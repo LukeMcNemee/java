@@ -26,7 +26,7 @@
 
 #Konstruktor
 
-* pokud jej explicitně nenapíšeme, použije se implicitní (bezparametrický, prázdný)
+* pokud jej explicitně nenapíšeme, použije se bezparametrický (prázdný)
 * můžeme definovat vlastní, jak s parametry, tak bezparametrický
 * použití pro iniciální nastavení vnitřního stavu objektu po vytvoření
 
