@@ -17,8 +17,17 @@ public class Main {
     public static void main(String[] args) {
         //create new semaphore s1
         Semaphore s1 = new Semaphore();
-
+        CrossRoad c1 = new CrossRoad();
         //few times print info and switch state
+        
+        //Crossroad
+        c1.printState();
+        c1.switchSignals();
+        c1.printState();
+        c1.switchSignals();
+        c1.printState();
+        
+        //Semaphore
         s1.printInfo();
         s1.nextState();
         s1.printInfo();

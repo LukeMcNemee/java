@@ -10,7 +10,7 @@ package semaphore;
  * @author LukeMcNemee
  */
 public class Semaphore {
-
+    
     private int state;    
 
     /**
@@ -33,7 +33,7 @@ public class Semaphore {
 
     /**
      * 
-     * @return stae of semaphore
+     * @return state of semaphore
      */
     public int getState() {
         return state;

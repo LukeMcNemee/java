@@ -24,6 +24,14 @@
 
 -----
 
+#Konstruktor
+
+* pokud jej explicitně nenapíšeme, použije se implicitní (bezparametrický, prázdný)
+* můžeme definovat vlastní, jak s parametry, tak bezparametrický
+* použití pro iniciální nastavení vnitřního stavu objektu po vytvoření
+
+-----
+
 #Zapouzdření
 
 * public a private
