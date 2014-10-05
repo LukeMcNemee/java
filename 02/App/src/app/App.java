@@ -3,28 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package semaphore;
+
+package app;
 
 /**
- * Basic demonstration of semaphore class function
+ *
  * @author LukeMcNemee
  */
-public class Main {
+public class App {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //create new semaphore s1
-        Semaphore s1 = new Semaphore();
-        
-        
-        //Semaphore
-        s1.printInfo();
-        s1.nextState();
-        s1.printInfo();;;
-        s1.nextState();
-        s1.printInfo();
+            System.out.println("hello");
     }
-
+    
 }
