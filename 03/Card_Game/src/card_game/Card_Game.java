@@ -19,7 +19,6 @@ public class Card_Game {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner scanner = new Scanner(System.in);
-        
 
         Deck myDeck = new Deck();
         Player player1 = new Player("John Doe");
@@ -31,12 +30,24 @@ public class Card_Game {
         player1.receiveCard(myDeck.dealCard());
         player2.receiveCard(myDeck.dealCard());
 
-               
         boolean wantsNext = true;
+
+        /*
+         TODO
+         přidat podmínku, aby cyklus nezačal, pokud je hodnota karet 21 nebo -1,
+         protože jakákoliv karta navíc znamená prohru
+         (při splnění podmínky nastavit wantsNext na false, cyklus potom bude rovnou přeskočen)
+         */
+        if (player1.getCardsValue() == -1 || player1.getCardsValue() == 21) {
+            System.out.println("Player 1, currently on: " + player1.getCardsValue());
+            System.out.println("no additional cards");
+            wantsNext = false;
+        }
+        
         while (wantsNext) {
             System.out.println("Player 1, currently on: " + player1.getCardsValue());
             System.out.println("Next Card? Enter Y/N");
-            String op = scanner.next();            
+            String op = scanner.next();
             switch (op) {
                 case "Y":
                 case "y":
@@ -55,15 +66,38 @@ public class Card_Game {
                     System.out.println("wrong option");
                     break;
             }
+            /*
+             TODO
+             přidat podmínku, aby cyklus skončil, pokud hodnota karet přesáhne 21
+             (nastavit wants next na false, pokud je podmínka splněna)
+             */
+            if (player1.getCardsValue() >= 21) {
+                System.out.println("Player 1, currently on: " + player1.getCardsValue());
+                System.out.println("no additional cards");
+                wantsNext = false;
+            }
+
         }
-        
+
         System.out.println("Player 2");
         wantsNext = true;
+        /*
+         TODO
+         přidat podmínku, aby cyklus nezačal, pokud je hodnota karet 21 nebo -1,
+         protože jakákoliv karta navíc znamená prohru
+         (při splnění podmínky nastavit wantsNext na false, cyklus potom bude rovnou přeskočen)
+         */
+        if (player2.getCardsValue() == -1 || player2.getCardsValue() == 21) {
+            System.out.println("Player 2, currently on: " + player2.getCardsValue());
+            System.out.println("no additional cards");
+            wantsNext = false;
+        }
+
         while (wantsNext) {
             System.out.println("Player 2, currently on: " + player2.getCardsValue());
             System.out.println("Next Card? Enter Y/N");
             String op = scanner.next();
-            
+
             switch (op) {
                 case "Y":
                 case "y":
@@ -82,45 +116,53 @@ public class Card_Game {
                     System.out.println("wrong option");
                     break;
             }
+            /*
+             TODO
+             přidat podmínku, aby cyklus skončil, pokud hodnota karet přesáhne 21
+             (nastavit wants next na false, pokud je podmínka splněna)
+             */
+            if (player2.getCardsValue() >= 21) {
+                System.out.println("Player 2, currently on: " + player2.getCardsValue());
+                System.out.println("no additional cards");
+                wantsNext = false;
+            }
         }
-        
+
         System.out.println("Results:");
-        
-        System.out.println("Player 1: " + player1.getCardsValue());
-        
-        System.out.println("Player 2: " + player2.getCardsValue());
-        
-        System.out.println("Player 1: " + player1.getNumCards());
-        System.out.println("Player 2: " + player2.getNumCards());
-        
+
+        System.out.println("Player 1 value: " + player1.getCardsValue());
+        System.out.println("Player 2 value: " + player2.getCardsValue());
+
+        System.out.println("Player 1 cards: " + player1.getNumCards());
+        System.out.println("Player 2 cards: " + player2.getNumCards());
+
         Player winner = null;
-        if(player1.getCardsValue() == -1 &&  player2.getCardsValue() != -1){
-           winner = player1;
-        } else if(player1.getCardsValue() != -1 &&  player2.getCardsValue() == -1){
-           winner = player2;
-        } else if(player1.getCardsValue() <= 21 &&  player1.getCardsValue() > player2.getCardsValue()){
-           winner = player1;
-        } else if(player2.getCardsValue() <= 21 &&  player2.getCardsValue() > player1.getCardsValue()){
-           winner = player2;
-        } else if(player2.getCardsValue() > 21 &&  player1.getCardsValue() <= 21){
-           winner = player1;
-        } else if(player1.getCardsValue() > 21 &&  player2.getCardsValue() <= 21){
-           winner = player2;
-        } else if(player1.getCardsValue() ==  player2.getCardsValue()){
-            if(player1.getNumCards() > player2.getNumCards()){
+        if (player1.getCardsValue() == -1 && player2.getCardsValue() != -1) {
+            winner = player1;
+        } else if (player1.getCardsValue() != -1 && player2.getCardsValue() == -1) {
+            winner = player2;
+        } else if (player1.getCardsValue() <= 21 && player1.getCardsValue() > player2.getCardsValue()) {
+            winner = player1;
+        } else if (player2.getCardsValue() <= 21 && player2.getCardsValue() > player1.getCardsValue()) {
+            winner = player2;
+        } else if (player2.getCardsValue() > 21 && player1.getCardsValue() <= 21) {
+            winner = player1;
+        } else if (player1.getCardsValue() > 21 && player2.getCardsValue() <= 21) {
+            winner = player2;
+        } else if (player1.getCardsValue() == player2.getCardsValue()) {
+            if (player1.getNumCards() > player2.getNumCards()) {
                 winner = player2;
-            } else if(player1.getNumCards() < player2.getNumCards()){
+            } else if (player1.getNumCards() < player2.getNumCards()) {
                 winner = player1;
             }
         }
-        
-        if(winner == null){
+
+        if (winner == null) {
             System.out.println("Draw");
         } else {
             System.out.println("Winner is: " + winner.getName());
         }
-        
-        
+
     }
 
 }
