@@ -12,7 +12,13 @@ package foo;
  */
 public class Foo {
     public static void main(String[] args){
+        
         Cuboid c1 = new Cuboid(5, 2, 3);
+        
+        System.out.println(c1.getArea());
+        System.out.println(c1.getVolume());
+        
+        c1.setA(5.5);
         
         System.out.println(c1.getArea());
         System.out.println(c1.getVolume());

@@ -29,6 +29,10 @@ public class Cuboid {
         this.a = a;
     }
 
+    
+    
+    
+
     public double getB() {
         return b;
     }
