@@ -66,6 +66,7 @@ public class Card_Game {
                     System.out.println("wrong option");
                     break;
             }
+            
             /*
              TODO
              přidat podmínku, aby cyklus skončil, pokud hodnota karet přesáhne 21
@@ -81,6 +82,7 @@ public class Card_Game {
 
         System.out.println("Player 2");
         wantsNext = true;
+        
         /*
          TODO
          přidat podmínku, aby cyklus nezačal, pokud je hodnota karet 21 nebo -1,
@@ -116,6 +118,7 @@ public class Card_Game {
                     System.out.println("wrong option");
                     break;
             }
+            
             /*
              TODO
              přidat podmínku, aby cyklus skončil, pokud hodnota karet přesáhne 21
@@ -126,6 +129,7 @@ public class Card_Game {
                 System.out.println("no additional cards");
                 wantsNext = false;
             }
+            
         }
 
         System.out.println("Results:");

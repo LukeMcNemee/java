@@ -26,6 +26,9 @@ public class Player {
             cardsValue o hodnotu karty a vypíše info, že hráč obdržel kartu 
             včetně informací o kartě (stačí vypsat card a java automaticky použije 
             toString pro kartu)    
+    
+        Generovat lze téměř vše kromě receiveCard (hlavička této funkce tu ale již je)
+        u ostatních je občas potřeba něco dopsat dovnitř
     */
     
     public Player(String name) {

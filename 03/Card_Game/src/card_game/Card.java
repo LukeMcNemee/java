@@ -16,11 +16,13 @@ public class Card {
     private String name;
 
     /*TODO: 
-        Konstruktor, všechny tři parametry
+        Konstruktor, všechny parametry
         Getter pro všechny parametry
         toString vracející textový řetězec s informacemi o kartě
         např: Card{ Queen of Hearts, value is 1 }
-        nebo: Card{ Ace of Clubs, value is 11 }     
+        nebo: Card{ Ace of Clubs, value is 11 }  
+    
+        Všechny funkce lze generovat celé, nebo alespoň hlavičku a upravit vnitřek
     */
     
     public Card(int value, String color, String name) {
