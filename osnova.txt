@@ -22,7 +22,7 @@ Osnova Java (pracovní verze):
 5. Dědičnost, polymorfizmus, hierarchie tříd,
 6. Equals, hashCode, 
 7. copareTo, comparator
-8. Pole
+8. Pole, for each,
 9. Kontejnery, list, set, map
 10. exceptions, throw, použití
 11. JUnit, testy

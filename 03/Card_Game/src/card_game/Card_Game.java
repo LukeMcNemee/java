@@ -1,7 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MIT License
+ *
+ * Copyright 2014 LukeMcNemee.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package card_game;
 
@@ -14,6 +32,8 @@ import java.util.Scanner;
 public class Card_Game {
 
     /**
+     * @brief reprezentation of card game, two players receive their cards, then 
+     * are asked for optional another card, results are shown in the end.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -32,6 +52,8 @@ public class Card_Game {
 
         boolean wantsNext = true;
 
+        printDivider(30);
+
         /*
          TODO
          přidat podmínku, aby cyklus nezačal, pokud je hodnota karet 21 nebo -1,
@@ -43,14 +65,17 @@ public class Card_Game {
             System.out.println("no additional cards");
             wantsNext = false;
         }
-        
+
         while (wantsNext) {
             System.out.println("Player 1, currently on: " + player1.getCardsValue());
             System.out.println("Next Card? Enter Y/N");
-            String op = scanner.next();
-            switch (op) {
+            String response = scanner.next();
+            switch (response) {
                 case "Y":
                 case "y":
+                case "Yes":
+                case "yes":
+                case "YES":
                     System.out.println("selected yes");
                     player1.receiveCard(myDeck.dealCard());
                     wantsNext = true;
@@ -58,6 +83,9 @@ public class Card_Game {
 
                 case "N":
                 case "n":
+                case "no":
+                case "No":
+                case "NO":
                     System.out.println("selected no");
                     wantsNext = false;
                     break;
@@ -66,7 +94,7 @@ public class Card_Game {
                     System.out.println("wrong option");
                     break;
             }
-            
+
             /*
              TODO
              přidat podmínku, aby cyklus skončil, pokud hodnota karet přesáhne 21
@@ -82,7 +110,7 @@ public class Card_Game {
 
         System.out.println("Player 2");
         wantsNext = true;
-        
+
         /*
          TODO
          přidat podmínku, aby cyklus nezačal, pokud je hodnota karet 21 nebo -1,
@@ -98,11 +126,14 @@ public class Card_Game {
         while (wantsNext) {
             System.out.println("Player 2, currently on: " + player2.getCardsValue());
             System.out.println("Next Card? Enter Y/N");
-            String op = scanner.next();
+            String response = scanner.next();
 
-            switch (op) {
+            switch (response) {
                 case "Y":
                 case "y":
+                case "Yes":
+                case "yes":
+                case "YES":
                     System.out.println("selected yes");
                     player2.receiveCard(myDeck.dealCard());
                     wantsNext = true;
@@ -110,6 +141,9 @@ public class Card_Game {
 
                 case "N":
                 case "n":
+                case "no":
+                case "No":
+                case "NO":
                     System.out.println("selected no");
                     wantsNext = false;
                     break;
@@ -118,7 +152,7 @@ public class Card_Game {
                     System.out.println("wrong option");
                     break;
             }
-            
+
             /*
              TODO
              přidat podmínku, aby cyklus skončil, pokud hodnota karet přesáhne 21
@@ -129,7 +163,7 @@ public class Card_Game {
                 System.out.println("no additional cards");
                 wantsNext = false;
             }
-            
+
         }
 
         System.out.println("Results:");
@@ -167,6 +201,14 @@ public class Card_Game {
             System.out.println("Winner is: " + winner.getName());
         }
 
+    }
+
+    
+    public static void printDivider(int length) {
+        for (int i = 0; i < length; i++) {
+            System.out.print("#");
+        }
+        System.out.println();
     }
 
 }
