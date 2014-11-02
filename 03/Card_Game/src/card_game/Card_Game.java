@@ -200,10 +200,14 @@ public class Card_Game {
         } else {
             System.out.println("Winner is: " + winner.getName());
         }
+        printDivider(30);
 
     }
 
-    
+    /**
+     * 
+     * @param length délka oddělovače
+     */
     public static void printDivider(int length) {
         for (int i = 0; i < length; i++) {
             System.out.print("#");
