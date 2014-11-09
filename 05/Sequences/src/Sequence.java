@@ -28,8 +28,17 @@
  */
 public interface Sequence {
     
+    /**
+     * @brief calculates n th member of sequence
+     * @param pos
+     * @return n th memer of sequence
+     */
     public int getNumberOnPosition(int pos);
     
+    /**
+     * @brief prints first n members of sequence
+     * @param n 
+     */
     public void printFirstN(int n);   
     
 }

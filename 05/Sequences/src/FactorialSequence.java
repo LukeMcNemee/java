@@ -23,7 +23,7 @@
  */
 
 /**
- *
+ * @brief Factorial Sequence
  * @author LukeMcNemee
  */
 public class FactorialSequence implements Sequence{

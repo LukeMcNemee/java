@@ -23,7 +23,7 @@
  */
 
 /**
- *
+ * @brief sequence of powers of two (2, 4, 8, 16, 32 ...)
  * @author LukeMcNemee
  */
 public class TwoPowerSequence implements Sequence{

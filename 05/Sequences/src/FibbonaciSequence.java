@@ -23,7 +23,7 @@
  */
 
 /**
- *
+ * @brief fibbonaci sequence
  * @author LukeMcNemee
  */
 public class FibbonaciSequence implements Sequence{
