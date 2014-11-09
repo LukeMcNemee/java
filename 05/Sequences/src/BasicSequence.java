@@ -22,47 +22,23 @@
  * THE SOFTWARE.
  */
 
-package time;
-
 /**
- * @brief China version of stopwatch, multiplies time by random coefitient in range 0.5 - 1.5
+ * @brief sequence: 1,2,3,4,5 ...
  * @author LukeMcNemee
  */
-public class ChinaStopWatch implements StopWatch{
+public class BasicSequence implements Sequence{
 
-    private long startTime;
-    private long endTime;
-    private double c;
-
-    public ChinaStopWatch() {
-        startTime = 0;
-        endTime = 0;
-        c = Math.random() + 0.5;        
-    }
-    
     @Override
-    public void startStopWatch() {
-        startTime = System.nanoTime();
+    public int getNumberOnPosition(int pos) {
+        return pos;
     }
 
     @Override
-    public void stopStopWatch() {
-        endTime = System.nanoTime();
-    }
-
-    @Override
-    public void resetStopWatch() {
-        startTime = 0;
-        endTime = 0;
-    }
-
-    @Override
-    public long getTimeDifference() {
-        if (startTime == 0 || endTime == 0) {
-            return 0;
+    public void printFirstN(int n) {
+        for(int i = 0; i < n; i++){
+            System.out.print(i+1 + " ");
         }
-        return (long)((endTime - startTime) * c);
-    }  
-
+        System.out.println();
+    }
     
 }

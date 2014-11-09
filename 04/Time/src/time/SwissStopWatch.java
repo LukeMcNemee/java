@@ -50,17 +50,14 @@ public class SwissStopWatch implements StopWatch {
 
     @Override
     public void resetStopWatch() {
-        startTime = 0;
-        endTime = 0;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public long getTimeDifference() {
-        if (startTime == 0 || endTime == 0) {
-            return 0;
-        }
-        return endTime - startTime;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
 
 }
