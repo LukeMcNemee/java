@@ -41,18 +41,12 @@ public class PremiumSavingAccount extends SavingAccount{
     }
 
     public double withdraw(double amount){
-        
-        if(balance >= amount){
-            premiumPeriod = 0;
-            balance -= amount;
-            return amount;
-        } else {        
-            return 0.0;
-        }
+        premiumPeriod = 0;
+        return super.withdraw(amount);
     }
     
     public void addMonthInterest(){
-        balance *= interest;
+        super.addMonthInterest();
         premiumPeriod++;
         if(premiumPeriod == 6){
             balance += 100;
