@@ -26,30 +26,31 @@
  *
  * @author LukeMcNemee
  */
-public class SavingAccount extends Account{
-    
+public class SavingAccount extends Account {
+
     protected double interest;
-    
-    public SavingAccount(double interest, double amount){
+
+    public SavingAccount(double interest, double amount) {
         super(amount);
-        this.interest = interest;        
+        this.interest = interest;
+        System.out.println("saving created");
     }
-    
-    public SavingAccount(double interest){
+
+    public SavingAccount(double interest) {
         super();
-        this.interest = interest;        
+        this.interest = interest;
     }
 
     public double getInterest() {
         return interest;
     }
-    
-    public void modifyInterest(double interest){
+
+    public void modifyInterest(double interest) {
         this.interest = interest;
     }
-    
-    public void addMonthInterest(){
+
+    public void addMonthInterest() {
         balance *= interest;
     }
-    
+
 }

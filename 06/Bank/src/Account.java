@@ -23,38 +23,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 /**
  *
  * @author LukeMcNemee
  */
 public class Account {
-    
+
     protected double balance;
-    
-    public Account(double ammount){
+
+    public Account(double ammount) {
         this.balance = ammount;
+        System.out.println("account created");
     }
-    
-    public Account(){
+
+    public Account() {
         balance = 0.0;
     }
 
     public double getBalance() {
         return balance;
     }
-    
-    public void deposit(double amount){
+
+    public void deposit(double amount) {
         balance += amount;
     }
-    
-    public double withdraw(double amount){
-        if(balance >= amount){
+
+    public double withdraw(double amount) {
+        if (balance >= amount) {
             balance -= amount;
             return amount;
-        } else {        
+        } else {
             return 0.0;
         }
     }
-    
+
 }

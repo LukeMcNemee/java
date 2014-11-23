@@ -32,6 +32,7 @@ public class PremiumSavingAccount extends SavingAccount{
     
     public PremiumSavingAccount(double interest, double amount) {
         super(interest, amount);
+        System.out.println("premium created");
     }
 
     public PremiumSavingAccount(double interest) {
@@ -50,12 +51,13 @@ public class PremiumSavingAccount extends SavingAccount{
     }
     
     public void addMonthInterest(){
+        balance *= interest;
         premiumPeriod++;
         if(premiumPeriod == 6){
-            balance += 1000;
+            balance += 100;
             premiumPeriod = 0;
         }
-        balance *= interest;
+        
     }    
     
 }
