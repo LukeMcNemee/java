@@ -24,30 +24,51 @@
  * THE SOFTWARE.
  */
 /**
- *
+ * @brief class represents simple account, which allows deposits and withdrawals
+ * with some basic checking for limits etc.
  * @author LukeMcNemee
  */
 public class Account {
 
     protected double balance;
 
+    /**
+     * @brief creates account
+     * @param ammount to be deposited in account
+     */
     public Account(double ammount) {
         this.balance = ammount;
         System.out.println("account created");
     }
 
+    /**
+     * @brief creates account with zero deposit
+     */
     public Account() {
         balance = 0.0;
     }
 
+    /**
+     * 
+     * @return actual balance on account
+     */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     * @brief adds to account
+     * @param amount to be added
+     */
     public void deposit(double amount) {
         balance += amount;
     }
 
+    /**
+     * @brief withdraws amount from account, checks for avaiable amount
+     * @param amount to be withdrawed
+     * @return withdrawed amount or zero
+     */
     public double withdraw(double amount) {
         if (balance >= amount) {
             balance -= amount;

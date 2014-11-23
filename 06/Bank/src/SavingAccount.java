@@ -23,7 +23,7 @@
  */
 
 /**
- *
+ * @brief saving account, adds interest every month
  * @author LukeMcNemee
  */
 public class SavingAccount extends Account {
@@ -49,6 +49,10 @@ public class SavingAccount extends Account {
         this.interest = interest;
     }
 
+    
+    /**
+     * @brief multiplies balance with interest
+     */
     public void addMonthInterest() {
         balance *= interest;
     }

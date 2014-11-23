@@ -23,7 +23,8 @@
  */
 
 /**
- *
+ * @brief modification of saving account, if there is no withdraw for 6 months, 
+ * account adds premium ammount to balance
  * @author LukeMcNemee
  */
 public class PremiumSavingAccount extends SavingAccount{
