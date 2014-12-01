@@ -34,22 +34,28 @@ public class Main {
     public static void main(String[] args) {
 
         Account a1 = new Account(500);
-        SavingAccount sa1 = new SavingAccount(1.2, 500);
-        PremiumSavingAccount psa1 = new PremiumSavingAccount(1.2, 500);
+        SporUcet sa1 = new SporUcet(1.2, 500);
+        //PremiumSavingAccount psa1 = new PremiumSavingAccount(1.2, 500);
 
         System.out.println("balance " + a1.getBalance());
         System.out.println("balance " + sa1.getBalance());
-        System.out.println("balance " + psa1.getBalance());
+        //System.out.println("balance " + psa1.getBalance());
+        
+        sa1.dalsiMesic();
+        
+        System.out.println("balance " + a1.getBalance());
+        System.out.println("balance " + sa1.getBalance());
 
-        for (int i = 1; i <= 15; i++) {
-            System.out.println("###########################################");
-            System.out.println("month " + i + ": ");
-
+        //for (int i = 1; i <= 15; i++) {
+            //System.out.println("###########################################");
+            //System.out.println("month " + i + ": ");
+/*
             sa1.addMonthInterest();
             psa1.addMonthInterest();
             System.out.println("balance " + a1.getBalance());
             System.out.println("balance " + sa1.getBalance());
             System.out.println("balance " + psa1.getBalance());
+        */
         }
 
     }
