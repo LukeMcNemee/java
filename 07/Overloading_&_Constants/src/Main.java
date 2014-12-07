@@ -15,11 +15,56 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        circle(5);
-        rectangle(5);
-        rectangle(5, 10);
+        
+        rectangle2(11);
+        
+        System.out.println("");
+        
+        hourGlass(11);
+        
+        
+        
+        
+        
     }
 
+    public static void hourGlass(int x){
+        for(int i = 0; i < x/2; i++){
+            for(int j = 0; j < x; j++){
+                if(j >= i && j <= x - i - 1){
+                     System.out.print("#");
+                } else {
+                     System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+        for(int i = x/2; i < x; i++){
+            for(int j = 0; j < x; j++){
+                if(j <= i && j >= x - i - 1){
+                     System.out.print("#");
+                } else {
+                     System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+    
+    public static void rectangle2(int x){
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < x; j++) {
+                if(i == 0 || j == 0 || i == x-1 || j == x-1 || j == i || j == x - i - 1){
+                    System.out.print("#");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+    }
+    
     public static void rectangle(int x) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
@@ -28,9 +73,7 @@ public class Main {
             System.out.println("");
         }
         System.out.println("");
-
     }
-
     /* //
      public static int rectangle(int x){
      return 0;
@@ -44,7 +87,6 @@ public class Main {
             System.out.println("");
         }
         System.out.println("");
-
     }
 
     public static void circle(int r) {
