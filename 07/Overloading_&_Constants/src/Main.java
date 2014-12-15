@@ -1,3 +1,7 @@
+
+import java.util.Random;
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,25 +12,64 @@
  *
  * @author LukeMcNemee
  */
+
+
 public class Main {
 
+    static final int SCREEN_MAX = 80;
+    
     /**
      * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+     */   
+    public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
         
-        rectangle2(11);
-        
-        System.out.println("");
-        
-        hourGlass(11);
         
         
-        
-        
+        matrix();
         
     }
+    
+    
+    public static void snow() throws InterruptedException{
+        for (;;){
+            for(int i = 0; i < SCREEN_MAX; i++){
+                if(Math.random() > 0.95){
+                    System.out.print("\u2744");
+                }else {
+                    System.out.print(" ");
+                }                
+            }
+            System.out.println("");
+            Thread.sleep(100);
+        }
+    }
+    
+    public static void matrix() throws InterruptedException{
+        Boolean[] screen = new Boolean[SCREEN_MAX];
+        for(int i = 0; i < SCREEN_MAX; i++){
+            screen[i] = false;
+        }
+        for (;;){
+            for(int i = 0; i < SCREEN_MAX; i++){
+                double rand = Math.random();
+                if((rand > 0.70 && screen[i] == true) || (rand > 0.95 && screen[i] == false)){
+                    screen[i] = !screen[i];
+                }
+                
+                if(screen[i] == true){
+                    Random chr = new Random();
+                    System.out.print((char)(chr.nextInt(500)+'a'));
+                } else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println("");
+            Thread.sleep(90);
+        }
+    }
+    
+      
 
     public static void hourGlass(int x){
         for(int i = 0; i < x/2; i++){
@@ -68,7 +111,11 @@ public class Main {
     public static void rectangle(int x) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
-                System.out.print("#");
+                if(j >= x-i){
+                    System.out.print("#");
+                }else{
+                    System.out.print(" ");
+                }
             }
             System.out.println("");
         }
