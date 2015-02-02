@@ -26,7 +26,7 @@ public class Main {
         
         
         
-        matrix();
+        snow();
         
     }
     
