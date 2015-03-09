@@ -31,6 +31,7 @@ public class Cipher {
 
         System.out.println(cipherText);
         
+        /*
         CaesarBruteForce breaker;
         try {
             breaker = new CaesarBruteForce("words.txt");
@@ -38,7 +39,7 @@ public class Cipher {
         } catch (IOException ex) {
             System.err.println("error "+ ex.getMessage());
         }
-        
+        */
         
     }
 
