@@ -48,12 +48,13 @@ public class Cipher {
             for (String s : split){
                 if(dict.contains(s)){
                     found++;
-                    System.out.println(s);
+                    //System.out.println(s);
                 }
             } 
-            System.out.println(test);
-            System.out.println(found + " "+ split.length);
+            //System.out.println(test);
+            //System.out.println(found + " "+ split.length);
             if(found > split.length * 0.2){
+                System.out.println(found + " "+ split.length);
                 System.out.println(test);
                 return;
             }
