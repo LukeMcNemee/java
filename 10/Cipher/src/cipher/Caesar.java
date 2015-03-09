@@ -17,14 +17,14 @@ public class Caesar {
         this.key = key % 26;
     }
 
-    public String encode(String text) {
+    private String code(String text, int key) {
         StringBuilder result = new StringBuilder();
         for (char i : text.toCharArray()) {
             if (Character.isLetter(i)) {
                 if (Character.isUpperCase(i)) {
-                    result.append((char) ('A' + (i - 'A' + key) % 26));
+                    result.append((char) ('A' + (i - 'A' + key + 26) % 26));
                 } else {
-                    result.append((char) ('a' + (i - 'a' + key) % 26));
+                    result.append((char) ('a' + (i - 'a' + key + 26) % 26));
                 }
             } else {
                 result.append(i);
@@ -33,20 +33,11 @@ public class Caesar {
         return result.toString();
     }
 
+    public String encode(String text) {
+        return code(text, key);
+    }
 
-public String decode(String text){
-        StringBuilder result = new StringBuilder();
-        for (char i : text.toCharArray()) {
-            if (Character.isLetter(i)) {
-                if (Character.isUpperCase(i)) {
-                    result.append((char) ('A' + (i - 'A' - key + 26) % 26));
-                } else {
-                    result.append((char) ('a' + (i - 'a' - key + 26) % 26));
-                }
-            } else {
-                result.append(i);
-            }
-        }
-        return result.toString();
+    public String decode(String text) {
+        return code(text, -key);
     }
 }
