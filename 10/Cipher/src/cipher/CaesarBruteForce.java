@@ -34,10 +34,10 @@ public class CaesarBruteForce {
         List<String> dict = new ArrayList<>();
 
         int wordCount = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader( file))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                dict.add(line);
+                dict.add(Cipher.unify(line));
                 //wordCount++;
             }
         } catch (IOException ex) {
@@ -48,18 +48,18 @@ public class CaesarBruteForce {
         for (int i = 0; i < 26; i++) {
             Caesar caesar = new Caesar(i);
             String test = caesar.decode(cipherText);
-            String[] split = test.split(" ");
+            String[] rozdelenyText = test.split(" ");
             int found = 0;
-            for (String s : split) {
-                if (dict.contains(s)) {
+            for (String s : rozdelenyText) {
+                if (dict.contains(Cipher.unify(s)) && s.length() >= 3 ) {
                     found++;
-                    //System.out.println(s);
+                    System.out.println(s);
                 }
             }
             //System.out.println(test);
-            //System.out.println(found + " "+ split.length);
-            if (found > split.length * 0.2) {
-                System.out.println(found + " " + split.length);
+            //System.out.println(found + " "+ rozdelenyText.length);
+            if (found > rozdelenyText.length * 0.2) {
+                System.out.println(found + " " + rozdelenyText.length);
                 System.out.println(test);
                 return;
             }
