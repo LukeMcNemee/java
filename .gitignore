@@ -38,3 +38,7 @@ hs_err_pid*
 /09/BigNumbers/build/
 /10/Cipher/nbproject/private/
 /10/Cipher/build/
+/project/Server/nbproject/private/
+/project/Client/nbproject/private/
+/project/Server/build/
+/project/Client/build/
