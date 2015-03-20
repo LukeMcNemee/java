@@ -31,4 +31,8 @@ package Server;
  */
 public class Utils {
     
+    
+    public static String evaluate(Grid g){
+        return "ABCD";
+    }
 }

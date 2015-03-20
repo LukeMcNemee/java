@@ -39,10 +39,14 @@ public class ServerThread implements Runnable {
     private Socket connectionSocket;
     private String line, input;
     private Grid g;
+    private char color;
+    private Object lock;
 
-    ServerThread(Socket connectionSocket, Grid g) {
+    ServerThread(Socket connectionSocket, Grid g, char color, Object lock) {
         this.connectionSocket = connectionSocket;
         this.g = g;
+        this.color = color;
+        this.lock = lock;
     }
 
     @Override
@@ -55,19 +59,63 @@ public class ServerThread implements Runnable {
             DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
 
             PrintStream out = new PrintStream(connectionSocket.getOutputStream());
-            while (connectionSocket.isConnected()) {
-                System.out.println(inFromClient.readLine());
-                outToClient.writeBytes("DEFEAT\n");
-                // Now write to the client
-                //System.out.println("Overall message is:" + input);
-                //out.println("Overall message is:" + input);
+            while (true) {
+                String received = inFromClient.readLine();
+                
+                if (received == null) {
 
+                } else {
+                    String[] split = received.split(" ");
+                    System.out.println("[DEBUG] received: "+ received + " from " + color);
+                    System.out.println("split[0]:"+split[0]);
+                    switch (split[0]) {
+                        case "STATUS":
+                            synchronized(lock){
+                                System.out.println(Utils.evaluate(g));
+                                if(Utils.evaluate(g) == "WIN"){
+                                    outToClient.writeBytes("WIN" + "\n");
+                                } else if (Utils.evaluate(g) == "DEFEAT"){
+                                    outToClient.writeBytes("DEFEAT" + "\n");
+                                } 
+                                if(g.getColor() == color){
+                                    outToClient.writeBytes("PLAY" + "\n");
+                                } else {
+                                    outToClient.writeBytes("WAIT" + "\n");
+                                }
+                            }
+                            break;
+                        case "SIZE":
+                            outToClient.writeBytes(g.getSize() + "\n");
+                            break;
+                        case "COLOR":
+                            outToClient.writeBytes(color + "\n");
+                            break;
+                        case "GRID":
+                            char response = '0';
+                            synchronized(lock){
+                                response = g.getGrid(Integer.parseInt(split[1]), Integer.parseInt(split[2]));
+                            }
+                            outToClient.writeBytes(response + "\n");
+                            break;
+                        case "PLAY":
+                            synchronized(lock){
+                                int back = g.play(Integer.parseInt(split[1]), Integer.parseInt(split[2]), color);
+                                outToClient.writeBytes(back + "\n");
+                            }
+                            break;
+                        default:
+                            outToClient.writeBytes("ERROR, command not known" + "\n");
+                            System.out.println("[ERROR] received: " + received);
+                            break;
+                    }
+                    System.out.println(g.toString());
+                }
+                
             }
-            connectionSocket.close();
+
         } catch (IOException ioe) {
-            System.out.println("IOException on socket listen: " + ioe);
-            //ioe.printStackTrace();
-            
+            System.out.println("Connection terminated; IOException on socket listen: " + ioe);
+
         }
     }
 }

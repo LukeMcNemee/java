@@ -36,14 +36,13 @@ public class Main {
 
     /**
      * @param args the command line arguments
-     * @throws java.io.IOException
      */
     // Listen for incoming connections and handle them
     public static void main(String[] args) {
         int i = 0;
         Grid g = new Grid(10);
         String grid = g.toString();
-
+        final Object gridLock = new Object();
         System.out.println(grid);
 
         try {
@@ -54,14 +53,23 @@ public class Main {
                 //ServerThread(connection);
 
                 server = listener.accept();
-                ServerThread conn_c = new ServerThread(server, g);
+                ServerThread conn_c = null;
+                if (i == 1) {
+                    conn_c = new ServerThread(server, g, 'X', gridLock);
+                } else {
+                    conn_c = new ServerThread(server, g, 'O', gridLock);
+                }
                 Thread t = new Thread(conn_c);
                 t.start();
             }
-            
+            synchronized(gridLock){
+                System.out.println("[DEBUG] two clients connected, game starts");
+                g.startGame();
+            }
+
         } catch (IOException ioe) {
             System.out.println("IOException on socket listen: " + ioe);
-            ioe.printStackTrace();
+            //ioe.printStackTrace();
         }
     }
 

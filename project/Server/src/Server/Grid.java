@@ -34,32 +34,63 @@ public class Grid {
      */
     private int size;
     private char[][] gameGrid;
+    private char color;
 
     public Grid(int size) {
         this.size = size;
         gameGrid = new char[10][10];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                gameGrid[i][j] = '0';
+                gameGrid[i][j] = '_';
             }
         }
+        color = '_';
+    }
+    
+    public void startGame(){
+        color = 'X';
     }
 
-    public int play(int x, int y, char player) {
-        if (x >= size || y >= size || x < 0 || y < 0) {
-            System.err.println("Wrong coordinates, out of grid");
+    public char getColor() {
+        return color;
+    }
+
+    public int play(int x, int y,char myColor) {
+        if(myColor != color){
+            System.err.println("Wrong color");
             return -1;
         }
-        if (gameGrid[x][y] != 0) {
-            System.err.println("Wrong coordinates, already played");
+        if (x >= size || y >= size || x < 0 || y < 0) {
+            System.err.println("Wrong coordinates, out of grid");
             return -2;
         }
-        gameGrid[x][y] = player;
+        if (gameGrid[x][y] != '_') {
+            System.err.println("Wrong coordinates, already played");
+            return -3;
+        }
+        gameGrid[x][y] = color;
+        if(color == 'X'){
+            color = 'O';
+        } else {
+            color = 'X';
+        }
         return 0;
     }
 
     public char[][] getGameGrid() {
         return gameGrid.clone();
+    }
+    
+    public char getGrid(int x, int y){
+         if (x >= size || y >= size || x < 0 || y < 0) {
+            System.err.println("Wrong coordinates, out of grid");
+            return '0';
+        }
+        return gameGrid[x][y];
+    }
+
+    public int getSize() {
+        return size;
     }
 
     @Override
@@ -68,11 +99,12 @@ public class Grid {
         builder.append(size + "\n");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                builder.append(gameGrid[i][j]);
+                builder.append(gameGrid[j][i]);
             }
             builder.append("\n");
         }
         return builder.toString();
-    }
+    }  
+    
 
 }
