@@ -1,0 +1,106 @@
+% Git & GitHub 
+% Lukáš Němec
+% 2015 
+
+# Jak sdílet kód
+
+USB flash
+
+* pomalé, neaktuální kód, velmi problematické pro 3 a více lidí
+
+Email
+
+* snesitelnější než USB, pořád nepraktické (stažení přílohy)
+* aktuální při spoustě mailů => spousta mailů
+
+FB chat
+
+* nepraktické pro kód, rozhodí formátování atd.
+
+spousta dalších ...
+
+-----
+
+# Verzovací systém
+
+* Git, SVN, Mercurial, Bazaar ...
+* umožňuje přístup k aktuálnímu kódu
+* především na textové soubory
+* pamatuje si všechny provedené změny
+* umožňuje spolupráci desítek vývojářů najednou
+* spousta možností na webu, kde umístit projekt (GitHub, SourceForge,  )
+
+-----
+
+# Jak to funguje 
+
+<img src="git1.png" alt="Drawing" style="width: 780px;"/>
+
+-----
+
+# Jak to funguje II.
+
+<img src="git2.png" alt="Drawing" style="width: 760px;"/>
+
+-----
+
+# Základy
+
+* Pull - stáhnout k sobě ze serveru
+* Push - nahrát na server
+* Commit - zapsat lokální změny 
+* Stash - zahodit lokální změny od posledního commit
+* Add - přidat lokálně nový soubor 
+* Status - aktuální stav (změněné soubory ...)
+
+-----
+
+# Základy II.
+
+* Clone - vytvoření lokálního repositáře stažením kopie ze serveru
+* Fork - vytvoření vlastní větve jiného repositáře (na serveru)
+* Merge - sloučení dvou různých lokálních verzí do jedné na serveru
+* Checkout, Branch ...
+
+-----
+
+# Další užitečné - .gitignore 
+
+* speciální soubor, určuje, které typy souborů git ignoruje
+* na git nepatří build soubory, kompilované soubory atd.
+
+```Bash
+# Compiled Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+```
+
+-----
+
+# GitHub
+<center>
+<img src="octocat.jpg" alt="Drawing" style="width: 500px;"/>
+</center>
+
+-----
+
+# GitHub II.
+
+* "sociální síť pro git"
+* sledování zajímavých projektů, lidí ...
+
+
+* Issues - problémy, které je třeba řešit
+
+* spousta již existujících projektů 
+
+- linux kernel
+
+- ruby on rails
+
+
