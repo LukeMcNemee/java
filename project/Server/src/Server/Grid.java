@@ -48,8 +48,8 @@ public class Grid {
         }
         color = '_';
     }
-    
-    public void startGame(){
+
+    public void startGame() {
         color = 'X';
     }
 
@@ -57,8 +57,8 @@ public class Grid {
         return color;
     }
 
-    public int play(int x, int y,char myColor) {
-        if(myColor != color){
+    public int play(int x, int y, char myColor) {
+        if (myColor != color) {
             System.err.println("Wrong color");
             return -1;
         }
@@ -71,7 +71,7 @@ public class Grid {
             return -3;
         }
         gameGrid[x][y] = color;
-        if(color == 'X'){
+        if (color == 'X') {
             color = 'O';
         } else {
             color = 'X';
@@ -82,9 +82,9 @@ public class Grid {
     public char[][] getGameGrid() {
         return gameGrid.clone();
     }
-    
-    public char getGrid(int x, int y){
-         if (x >= size || y >= size || x < 0 || y < 0) {
+
+    public char getGrid(int x, int y) {
+        if (x >= size || y >= size || x < 0 || y < 0) {
             System.err.println("Wrong coordinates, out of grid");
             return '0';
         }
@@ -94,11 +94,11 @@ public class Grid {
     public int getSize() {
         return size;
     }
-    
+
     public int getWinLength() {
         return winLength;
     }
-    
+
     public String getGameGridAsString() {
         String grid = "";
         for (int y = 0; y < size; y++) {
@@ -115,24 +115,11 @@ public class Grid {
         builder.append(size).append("\n");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                switch (gameGrid[j][i]) {
-                    case 'X':
-                        builder.append("X ");
-                        break;
-                    case 'O':
-                        builder.append("O ");
-                        break;
-                    case '_':
-                        builder.append("  ");
-                        break;
-                    default:
-                        builder.append(gameGrid[j][i]).append(" ");
-                }
+                builder.append(gameGrid[j][i]).append(" ");
             }
             builder.append("\n");
         }
         return builder.toString();
-    }  
-    
+    }
 
 }

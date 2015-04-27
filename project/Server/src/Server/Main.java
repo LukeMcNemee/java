@@ -32,7 +32,7 @@ import java.net.*;
  */
 public class Main {
 
-    private static int port = 13248, maxConnections = 2;
+    private static final int port = 13248, maxConnections = 2;
 
     /**
      * @param args the command line arguments
