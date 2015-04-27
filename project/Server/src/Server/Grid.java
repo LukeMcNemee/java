@@ -32,12 +32,14 @@ public class Grid {
     /**
      * Grid size
      */
-    private int size;
-    private char[][] gameGrid;
+    private final int size;
+    private final char[][] gameGrid;
+    private final int winLength;
     private char color;
 
-    public Grid(int size) {
+    public Grid(int size, int winLength) {
         this.size = size;
+        this.winLength = winLength;
         gameGrid = new char[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -92,14 +94,40 @@ public class Grid {
     public int getSize() {
         return size;
     }
+    
+    public int getWinLength() {
+        return winLength;
+    }
+    
+    public String getGameGridAsString() {
+        String grid = "";
+        for (int y = 0; y < size; y++) {
+            for (int x = 0; x < size; x++) {
+                grid += gameGrid[x][y];
+            }
+        }
+        return grid;
+    }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(size + "\n");
+        builder.append(size).append("\n");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                builder.append(gameGrid[j][i]);
+                switch (gameGrid[j][i]) {
+                    case 'X':
+                        builder.append("X ");
+                        break;
+                    case 'O':
+                        builder.append("O ");
+                        break;
+                    case '_':
+                        builder.append("  ");
+                        break;
+                    default:
+                        builder.append(gameGrid[j][i]).append(" ");
+                }
             }
             builder.append("\n");
         }

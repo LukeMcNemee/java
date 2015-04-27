@@ -32,44 +32,63 @@ import java.net.*;
  */
 public class Main {
 
-    private static int port = 3248, maxConnections = 2;
+    private static int port = 13248, maxConnections = 2;
 
     /**
      * @param args the command line arguments
      */
     // Listen for incoming connections and handle them
     public static void main(String[] args) {
-        int i = 0;
-        Grid g = new Grid(10);
-        String grid = g.toString();
-        final Object gridLock = new Object();
-        System.out.println(grid);
-
+        ServerSocket listener;
         try {
-            ServerSocket listener = new ServerSocket(port);
-            Socket server;
-
-            while ((i++ < maxConnections) || (maxConnections == 0)) {
-                //ServerThread(connection);
-
-                server = listener.accept();
-                ServerThread conn_c = null;
-                if (i == 1) {
-                    conn_c = new ServerThread(server, g, 'X', gridLock);
-                } else {
-                    conn_c = new ServerThread(server, g, 'O', gridLock);
-                }
-                Thread t = new Thread(conn_c);
-                t.start();
-            }
-            synchronized(gridLock){
-                System.out.println("[DEBUG] two clients connected, game starts");
-                g.startGame();
-            }
-
+            listener = new ServerSocket(port);
         } catch (IOException ioe) {
             System.out.println("IOException on socket listen: " + ioe);
+            return;
             //ioe.printStackTrace();
+        }
+        while (true) {
+            int i = 0;
+            Grid g;
+            if (args.length > 1) {
+                try {
+                    g = new Grid(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    g = new Grid(10, 5);
+                }
+            } else {
+                g = new Grid(10, 5);
+            }
+            String grid = g.toString();
+            final Object gridLock = new Object();
+            System.out.println(grid);
+
+            try {
+                Socket server;
+
+                while ((i++ < maxConnections) || (maxConnections == 0)) {
+                    //ServerThread(connection);
+
+                    server = listener.accept();
+                    ServerThread conn_c = null;
+                    if (i == 1) {
+                        conn_c = new ServerThread(server, g, 'X', gridLock);
+                    } else {
+                        conn_c = new ServerThread(server, g, 'O', gridLock);
+                    }
+                    Thread t = new Thread(conn_c);
+                    t.start();
+                }
+                synchronized (gridLock) {
+                    System.out.println("[DEBUG] two clients connected, game starts");
+                    g.startGame();
+                }
+
+            } catch (IOException ioe) {
+                System.out.println("IOException on socket listen: " + ioe);
+                //ioe.printStackTrace();
+            }
         }
     }
 
