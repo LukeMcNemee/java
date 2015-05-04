@@ -36,11 +36,11 @@ import java.net.Socket;
  */
 public class ServerThread implements Runnable {
 
-    private Socket connectionSocket;
+    private final Socket connectionSocket;
     private String line, input;
-    private Grid g;
-    private char color;
-    private Object lock;
+    private final Grid g;
+    private final char color;
+    private final Object lock;
 
     ServerThread(Socket connectionSocket, Grid g, char color, Object lock) {
         this.connectionSocket = connectionSocket;
@@ -59,60 +59,75 @@ public class ServerThread implements Runnable {
             DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
 
             PrintStream out = new PrintStream(connectionSocket.getOutputStream());
-            while (true) {
+            while (connectionSocket.isConnected()) {
                 String received = inFromClient.readLine();
-                
+
                 if (received == null) {
-
-                } else {
-                    String[] split = received.split(" ");
-                    System.out.println("[DEBUG] received: "+ received + " from " + color);
-                    System.out.println("split[0]:"+split[0]);
-                    switch (split[0]) {
-                        case "STATUS":
-                            synchronized(lock){
-                                System.out.println(Utils.evaluate(g));
-                                if(Utils.evaluate(g) == "WIN"){
-                                    outToClient.writeBytes("WIN" + "\n");
-                                } else if (Utils.evaluate(g) == "DEFEAT"){
-                                    outToClient.writeBytes("DEFEAT" + "\n");
-                                } 
-                                if(g.getColor() == color){
-                                    outToClient.writeBytes("PLAY" + "\n");
-                                } else {
-                                    outToClient.writeBytes("WAIT" + "\n");
-                                }
-                            }
-                            break;
-                        case "SIZE":
-                            outToClient.writeBytes(g.getSize() + "\n");
-                            break;
-                        case "COLOR":
-                            outToClient.writeBytes(color + "\n");
-                            break;
-                        case "GRID":
-                            char response = '0';
-                            synchronized(lock){
-                                response = g.getGrid(Integer.parseInt(split[1]), Integer.parseInt(split[2]));
-                            }
-                            outToClient.writeBytes(response + "\n");
-                            break;
-                        case "PLAY":
-                            synchronized(lock){
-                                int back = g.play(Integer.parseInt(split[1]), Integer.parseInt(split[2]), color);
-                                outToClient.writeBytes(back + "\n");
-                            }
-                            break;
-                        default:
-                            outToClient.writeBytes("ERROR, command not known" + "\n");
-                            System.out.println("[ERROR] received: " + received);
-                            break;
-                    }
-                    System.out.println(g.toString());
+                    continue;
                 }
-                
+                String[] split = received.split(" ");
+                System.out.println("[DEBUG] received: " + received + " from " + color);
+                System.out.println("split[0]:" + split[0]);
+                String output;
+                switch (split[0]) {
+                    case "STATUS":
+                        synchronized (lock) {
+                            String utils = Utils.evaluate(g, color);
+                            System.out.println(utils);
+                            switch (utils) {
+                                case "WIN":
+                                    outToClient.writeBytes("WIN" + "\n");
+                                    break;
+                                case "DEFEAT":
+                                    outToClient.writeBytes("DEFEAT" + "\n");
+                                    break;
+                                default:
+                                    if (g.getColor() == color) {
+                                        outToClient.writeBytes("PLAY" + "\n");
+                                    } else {
+                                        outToClient.writeBytes("WAIT" + "\n");
+                                    }
+                            }
+                        }
+                        break;
+                    case "SIZE":
+                        outToClient.writeBytes(g.getSize() + "\n");
+                        break;
+                    case "COLOR":
+                        outToClient.writeBytes(color + "\n");
+                        break;
+                    case "GRID":
+                        synchronized (lock) {
+                            output = Character.toString(g.getGrid(Integer.parseInt(split[1]), Integer.parseInt(split[2])));
+                        }
+                        outToClient.writeBytes(output + "\n");
+                        break;
+                    case "PLAY":
+                        synchronized (lock) {
+                            output = Integer.toString(g.play(Integer.parseInt(split[1]), Integer.parseInt(split[2]), color));
+                        }
+                        outToClient.writeBytes(output + "\n");
+                        break;
+                    case "FULLGRID":
+                        synchronized (lock) {
+                            output = g.getGameGridAsString();
+                        }
+                        outToClient.writeBytes(output + "\n");
+                        break;
+                    case "WINLENGTH":
+                        synchronized (lock) {
+                            output = Integer.toString(g.getWinLength());
+                        }
+                        outToClient.writeBytes(output + "\n");
+                        break;
+                    default:
+                        outToClient.writeBytes("ERROR, command not known" + "\n");
+                        System.out.println("[ERROR] received: " + received);
+                        break;
+                }
+                System.out.println(g.toString());
             }
-
+            connectionSocket.close();
         } catch (IOException ioe) {
             System.out.println("Connection terminated; IOException on socket listen: " + ioe);
 
