@@ -30,7 +30,7 @@ public class BasicSequence implements Sequence{
 
     @Override
     public int getNumberOnPosition(int pos) {
-        return pos;
+        return 1;
     }
 
     @Override
