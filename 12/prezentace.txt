@@ -1,0 +1,111 @@
+% Java Pokročilí
+% Lukáš Němec
+% 2015
+
+# pokročilí - náplň kroužku
+
+ * opakování základů
+ * Primitivní a objektové datové typy
+ * Vícevláknové aplikace
+ * Grafické uživatelské rozhraní
+ * Základy webových aplikací
+ * Internacionalizace a lokalizace aplikací
+ * Ukládání konfigurace, záznam činnosti aplikace
+ * Hledání chyb
+ * Optimalizace a ladění výkonu aplikace
+ * Abstraktní třídy
+
+-----
+
+# LukeMcNemee.eu
+
+* sekce lužánky info - Java - Pokročilí
+
+* návod k Javě co nainstalovat a různé alternativy
+
+* snad pravidelně obsah jednotlivých hodin
+
+* snad řešení jednotlivých úloh z hodin
+
+* většinou formou odkazů na GitHub
+
+* snad letos již bez výpadků 
+
+-----
+
+# Hello word
+
+
+-----
+
+# Konvence při psaní kódu 
+
+## jména balíčků 
+
+* malými písmeny (java, lang, util ...)
+* obsahují webovou adresu tvůrce
+- cz.muni.fi. ...
+- cz.luzanky.vyt.java. ...
+- org.apache.commons. ...
+
+-----
+
+# Konvence při psaní kódu 
+
+## jména tříd
+
+- první písmeno velké, ostatní malá
+- podstatné jméno
+- Person
+- Foo
+- Color
+
+
+-----
+
+# Konvence při psaní kódu 
+
+## jména rozhraní
+
+- první písmeno velké, ostatní malá
+- přídavné jméno - pokud je to možné
+- Runnable
+- Remote
+- Comparable
+
+-----
+
+# Konvence při psaní kódu 
+
+## jména funkcí
+
+- malými písmeny, camel Case
+- název vystihující funkci
+- toString
+- main
+- print
+
+-----
+
+# Konvence při psaní kódu 
+
+## jména proměnných
+
+- malými písmeny, camel Case
+- název vystihujíí obsah
+- key
+- firstName
+- age
+
+-----
+
+# Konvence při psaní kódu 
+
+## jména konstant
+
+- vše velké, názvy oddělené podtržítkem
+- RED 
+- YELLOW
+- MAX_PRIORITY
+
+-----

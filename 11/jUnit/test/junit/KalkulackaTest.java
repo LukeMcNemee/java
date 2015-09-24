@@ -6,10 +6,6 @@
 
 package junit;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,5 +25,16 @@ public class KalkulackaTest {
     @Test
     public void testSoucet2() {
         assertEquals(4.2, k.soucet(2.1, 2.1),0);
+    }
+    
+    @Test
+    public void testPodil() {
+        assertEquals(4, k.podil(4,1),0);
+        try{
+            k.podil(4,0);
+        } catch (Exception e){
+            return;
+        }
+        fail();
     }
 }
