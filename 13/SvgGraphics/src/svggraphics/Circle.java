@@ -6,6 +6,9 @@
 
 package svggraphics;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 /**
  *
  * @author LukeMcNemee
@@ -30,8 +33,8 @@ public class Circle implements GraphicsObject{
     
     
     @Override
-    public String toSvg() {
-        return "<circle cx=\""+ cx +"\" cy=\""+cy+"\" r=\""+r+"\" stroke=\"" +stroke+ "\" stroke-width=\""+ strokeWidth+"\" fill=\""+ fill+"\"/>\n";
+    public void toSvg(BufferedWriter bw) throws IOException {
+        bw.append("<circle cx=\""+ cx +"\" cy=\""+cy+"\" r=\""+r+"\" stroke=\"" +stroke+ "\" stroke-width=\""+ strokeWidth+"\" fill=\""+ fill+"\"/>\n");
     }
     
 }

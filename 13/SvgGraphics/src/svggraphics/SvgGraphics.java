@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package svggraphics;
 
 import java.io.BufferedWriter;
@@ -21,17 +20,15 @@ public class SvgGraphics {
      */
     public static void main(String[] args) throws IOException {
         Canvas canvas = new Canvas();
-        canvas.addGraphics(new Rectangle(10,10,100,100,"yellow","blue",4));
-        canvas.addGraphics(new Rectangle(150,10,100,100,"yellow","blue",4));
-        canvas.addGraphics(new Rectangle(10,150,100,100,"yellow","blue",4));
-        canvas.addGraphics(new Circle(50, 50, 30, "white", "red", 5));
-        
+
+        canvas.addGraphics(new RecursiveRectangle(100, 100, 500, 500,  "black","white", 4, 5));
+
         BufferedWriter bw = new BufferedWriter(new FileWriter("test.svg"));
-        
-        bw.write(canvas.toSvg());
-    
+
+        canvas.toSvg(bw);
+
         bw.flush();
         bw.close();
     }
-    
+
 }
