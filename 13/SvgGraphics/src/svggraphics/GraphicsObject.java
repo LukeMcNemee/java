@@ -6,12 +6,15 @@
 
 package svggraphics;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 /**
  *
  * @author LukeMcNemee
  */
 public interface GraphicsObject {
     
-    public String toSvg();
+    public void toSvg(BufferedWriter bw) throws IOException;
     
 }

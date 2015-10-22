@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package svggraphics;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,26 +15,23 @@ import java.util.List;
  * @author LukeMcNemee
  */
 public class Canvas {
+
     private List<GraphicsObject> graphics;
 
     public Canvas() {
         graphics = new ArrayList<>();
     }
-    
-    public void addGraphics(GraphicsObject graphic){
-        graphics.add(graphic);
+
+    public void addGraphics(GraphicsObject g) {
+        graphics.add(g);
     }
-    
-    
-    
-    public String toSvg(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("<svg xmlns=\"http://www.w3.org/2000/svg\">\n");
-        for(GraphicsObject g: graphics){
-            builder.append(g.toSvg());
+
+    public void toSvg(BufferedWriter bw) throws IOException {
+
+        bw.append("<svg xmlns=\"http://www.w3.org/2000/svg\">\n");
+        for (GraphicsObject g : graphics) {
+            g.toSvg(bw);
         }
-        builder.append("</svg>\n");
-        return builder.toString();
-    }   
-    
+        bw.append("</svg>\n");
+    }
 }

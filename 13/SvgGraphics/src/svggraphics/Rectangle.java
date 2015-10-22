@@ -6,21 +6,24 @@
 
 package svggraphics;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 /**
  *
  * @author LukeMcNemee
  */
 public class Rectangle implements GraphicsObject{
 
-    private int x;
-    private int y;
-    private int width;
-    private int height;    
+    private float x;
+    private float y;
+    private float width;
+    private float height;    
     private String fill;
     private String stroke;
-    private int strokeWidth;
+    private float strokeWidth;
 
-    public Rectangle(int x, int y, int width, int height, String fill, String stroke, int strokeWidth) {
+    public Rectangle(float x, float y, float width, float height, String fill, String stroke, float strokeWidth) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -31,10 +34,11 @@ public class Rectangle implements GraphicsObject{
     }
     
     
+    
+    
     @Override
-    public String toSvg() {
-        
-        return "<rect x=\""+ x +"\" y=\""+y+"\" height=\""+height+"\" width=\""+width+"\" stroke=\"" +stroke+ "\" stroke-width=\""+ strokeWidth+"\" fill=\""+ fill+"\"/>\n";
+    public void toSvg(BufferedWriter bw) throws IOException { 
+        bw.append("<rect x=\""+ x +"\" y=\""+y+"\" height=\""+height+"\" width=\""+width+"\" stroke=\"" +stroke+ "\" stroke-width=\""+ strokeWidth+"\" fill=\""+ fill+"\"/>\n");
     }
     
 }
