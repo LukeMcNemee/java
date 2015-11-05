@@ -20,7 +20,7 @@ public class SvgGraphics {
      */
     public static void main(String[] args) throws IOException {
         Canvas canvas = new Canvas();
-        canvas.addGraphics(new RecursiveRectangle(10, 10, 500,500, "black", "white", 3, 5));
+        canvas.addGraphics(new RecursiveRectangle(10, 10, 500,500, "black", "white", 3, 7));
         
 
         BufferedWriter bw = new BufferedWriter(new FileWriter("test.svg"));
