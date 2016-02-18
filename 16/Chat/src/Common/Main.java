@@ -1,11 +1,10 @@
 package Common;
 
+import Client.ChatClient;
 import Client.MessageType;
 import Client.Message;
-import Client.ChatClient;
 import Server.ChatServer;
 import javax.swing.JOptionPane;
-import org.apache.commons.lang3.StringEscapeUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,14 +19,13 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception 
     {
-        Message m = new Message(MessageType.TEXT, "hug,o");
-        System.out.println(m.getMessage());
-        System.out.println(m.getAuthor());
+        
        
-        /*
+        
         Object[] options = {"Start new", "Join"};
         int n = JOptionPane.showOptionDialog(null,
                 "New server or join?","Question",
@@ -38,17 +36,20 @@ public class Main {
         if (n == JOptionPane.NO_OPTION) {
             System.out.println("Join");
             ChatClient client = new ChatClient();
-            client.start();
+            String addr = JOptionPane.showInputDialog(null, "What's server address?", "localhost");
+            client.start(addr);
         } else if (n == JOptionPane.YES_OPTION) {
             System.out.println("Start new");
             ChatServer server = new ChatServer();
-            server.start();
+            ChatClient client = new ChatClient();
+            new Thread(server).start();
+            client.start("localhost");
                     
         } else if (n == JOptionPane.CLOSED_OPTION) {
             System.out.println("closed");
 
         }
-*/
+
     }
 
 }

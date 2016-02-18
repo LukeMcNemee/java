@@ -17,65 +17,83 @@ import javax.swing.JOptionPane;
  */
 public class ChatClient {
 
-    Socket clientSocket = null;
-    DataOutputStream outToServer;
-    BufferedReader inFromServer;
-    String name;
-    
-    
-    public void start() throws IOException {
-        //TODO get user name
-        name =  JOptionPane.showInputDialog(null, "What's your name?");
-        
-        System.out.println(name);
-        String sentence;
-        String modifiedSentence;
-        //BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
-        clientSocket = new Socket("localhost", 6789);
+    private Socket clientSocket = null;
+    private DataOutputStream outToServer;
+    private BufferedReader inFromServer;
+    private String name;
+
+    public void start(String address) throws IOException {
+        name = JOptionPane.showInputDialog(null, "What's your name?");
+        System.out.println("username:" + name);
+
+        String textFromServer;
+
+        clientSocket = new Socket(address, 6789);
         outToServer = new DataOutputStream(clientSocket.getOutputStream());
         inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         System.out.println("Connected");
-        //outToServer.writeBytes("hello \n");
-        //TODO hello message send
-        
+
+        outToServer.writeBytes(new Message(MessageType.HELLO, name).getMessage());
+
         outToServer.flush();
-         System.out.println("msg send");
-        modifiedSentence = inFromServer.readLine();
-        System.out.println("FROM SERVER: " + modifiedSentence);
         loop();
-        System.out.println("Close");
         close();
     }
-    
-    public void close() throws IOException{
+
+    public void close() throws IOException {
         clientSocket.close();
     }
-    
-    BufferedReader inFromUser; 
+
+    BufferedReader inFromUser;
 
     public ChatClient() {
-        inFromUser = new BufferedReader( new InputStreamReader(System.in));
+        inFromUser = new BufferedReader(new InputStreamReader(System.in));
     }
-    
-    private void loop(){
-        while(true){
+
+    private void loop() {
+        while (true) {
             try {
-                if(inFromServer.ready()){
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                if (inFromServer.ready()) {
                     String sentence = inFromServer.readLine();
                     Message m = new Message(sentence);
-                    if(m.getType() == MessageType.HELLO){
-                        System.out.println("New user: " + m.getAuthor());
-                    } else if (m.getType() == MessageType.HELLO){
-                        //...
+                    System.out.println("msg received "+ m.getMessage());
+                    switch (m.getType()) {
+                        case HELLO:
+                            System.out.println(m.getAuthor() + " connected");
+                            break;
+                        case LEAVE:
+                            System.out.println(m.getAuthor() + " left");
+
+                            break;
+                        case TEXT:
+                            System.out.println(m.getAuthor() + ": " + m.getText());
+                            break;
+                        case WRITING:
+                            System.out.println(m.getAuthor() + " is writing ...");
+
+                        default:
+                            System.out.println("Message not readable");
                     }
-                    
+
                     //System.out.println(sentence);                    
-                }                
-                if(inFromUser.ready()){
+                }
+                if (inFromUser.ready()) {
                     String sentence = inFromUser.readLine();
-                    //TODO send message format
-                    outToServer.writeBytes(sentence);
+                    if (sentence.equals(":quit")) {
+                        outToServer.writeBytes(new Message(MessageType.LEAVE, name).getMessage());
+                        return;
+                    }
+                    Message m = new Message(MessageType.TEXT, name, sentence);
+                    outToServer.writeBytes(m.getMessage());
                     outToServer.flush();
+                    
+                    outToServer.notify();
+                    System.out.println("msg send "+ m.getMessage());
                 }
             } catch (IOException ex) {
                 System.err.println("IO error");
