@@ -58,10 +58,13 @@ public class ChatClient {
                 Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                if (inFromServer.ready()) {
+                {
                     String sentence = inFromServer.readLine();
+                    if (sentence == null) {
+                        continue;
+                    }
                     Message m = new Message(sentence);
-                    System.out.println("msg received "+ m.getMessage());
+                    System.out.println("msg received " + m.getMessage());
                     switch (m.getType()) {
                         case HELLO:
                             System.out.println(m.getAuthor() + " connected");
@@ -91,9 +94,9 @@ public class ChatClient {
                     Message m = new Message(MessageType.TEXT, name, sentence);
                     outToServer.writeBytes(m.getMessage());
                     outToServer.flush();
-                    
+
                     outToServer.notify();
-                    System.out.println("msg send "+ m.getMessage());
+                    System.out.println("msg send " + m.getMessage());
                 }
             } catch (IOException ex) {
                 System.err.println("IO error");

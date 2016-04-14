@@ -18,8 +18,7 @@ public class ServerThread implements Runnable {
     private final DataOutputStream outToClient;
     private final BufferedReader inFromClient;
     private final ChatServer parent;
-    
-    
+
     public ServerThread(DataOutputStream outToClient, BufferedReader inFromClient, ChatServer parent) {
         this.outToClient = outToClient;
         this.inFromClient = inFromClient;
@@ -32,26 +31,27 @@ public class ServerThread implements Runnable {
         String clientSentence;
         while (true) {
             try {
-                if(inFromClient.ready()){
-                    
-                    clientSentence = inFromClient.readLine();
-                    System.out.println("received from client: "+clientSentence);
-                    parent.receiveMsg(clientSentence);
-                    
+
+                clientSentence = inFromClient.readLine();
+                if (clientSentence == null) {
+                    continue;
                 }
+                System.out.println("received from client: " + clientSentence);
+                parent.receiveMsg(clientSentence);
+
             } catch (IOException ex) {
                 System.err.println(ex.getMessage());
             }
         }
     }
-    
-    public void sendMsg(String msg){
+
+    public void sendMsg(String msg) {
         try {
             outToClient.writeBytes(msg);
             outToClient.flush();
-            System.out.println("Send to client: "+ msg);
+            System.out.println("Send to client: " + msg);
         } catch (IOException ex) {
-            System.err.println("Exception "+ ex.getMessage());
+            System.err.println("Exception " + ex.getMessage());
         }
     }
 

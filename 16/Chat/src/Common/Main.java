@@ -1,8 +1,6 @@
 package Common;
 
 import Client.ChatClient;
-import Client.MessageType;
-import Client.Message;
 import Server.ChatServer;
 import javax.swing.JOptionPane;
 
@@ -35,15 +33,18 @@ public class Main {
 
         if (n == JOptionPane.NO_OPTION) {
             System.out.println("Join");
-            ChatClient client = new ChatClient();
             String addr = JOptionPane.showInputDialog(null, "What's server address?", "localhost");
-            client.start(addr);
+            Chat chat = new Chat(addr);
+            chat.setVisible(true);
+            
         } else if (n == JOptionPane.YES_OPTION) {
             System.out.println("Start new");
             ChatServer server = new ChatServer();
-            ChatClient client = new ChatClient();
             new Thread(server).start();
-            client.start("localhost");
+
+            
+            Chat chat = new Chat("localhost");
+            chat.setVisible(true);
                     
         } else if (n == JOptionPane.CLOSED_OPTION) {
             System.out.println("closed");
